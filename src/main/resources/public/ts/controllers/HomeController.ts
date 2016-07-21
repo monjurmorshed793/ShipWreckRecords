@@ -1,3 +1,4 @@
+
 module app{
     import IScope = angular.IScope;
     interface IHomeController extends IScope{
@@ -10,6 +11,7 @@ module app{
         }
     }
 
-    angular.module("boot")
+    angular.module("boot")   
             .controller("HomeController",HomeController);
+
 }

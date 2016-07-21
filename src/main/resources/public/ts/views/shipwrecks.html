@@ -1,0 +1,72 @@
+<style>
+    .grid {
+        width: 1100px;
+        height: 250px;
+    }
+</style>
+<div class="container" ng-init="getShipWreck()" style="background-color: white;">
+    <!--<table class="table bordered" ng-if="editButtonClicked==false && addButtonClicked==false">
+        <thead>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Condition</th>
+            <th>Depth</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Years Discovered</th>
+        </thead>
+
+            <tr ng-repeat="s in shipWreckArr">
+                <td>{{s.name}}</td>
+                <td>{{s.description}}</td>
+                <td>{{s.condition}}</td>
+                <td>{{s.depth}}</td>
+                <td>{{s.latitude}}</td>
+                <td>{{s.longitude}}</td>
+                <td>{{s.yearsDiscovered}}</td>
+                <td><button ng-click="edit(s)">Edit</button><button ng-click="delete()">Delete</button></td>
+            </tr> 
+            <tr><td><button>Add</button></td></tr>
+    </table>-->
+    <div class="panel panel-primary" ng-if="editButtonClicked || addButtonClicked">
+        <div class="panel-heading" align="center">
+            <h3 class="panel-title">Edit Data</h3>
+        </div>
+        <div class="panel-body">
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="{{editModel.name}}">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control" id="description" placeholder="{{editModel.description}}">
+                </div>
+                <div class="form-group">
+                    <label for="condition">Condition</label>
+                    <input type="text" class="form-control" id="condition" placeholder="{{editModel.condition}}">
+                </div>
+                <div class="form-group">
+                    <label for="depth">Depth</label>
+                    <input type="text" class="form-control" id="depth" placeholder="{{editModel.depth}}">
+                </div>
+                <div class="form-group">
+                    <label for="latitude">Lalitude</label>
+                    <input type="text" class="form-control" id="latitude" placeholder="{{editModel.latitude}}">
+                </div>
+                <div class="form-group">
+                    <label for="longitude">Longitude</label>
+                    <input type="text" class="form-control" id="longitude" placeholder="{{editModel.longitude}}">
+                </div>
+                <div class="form-group">
+                    <label for="yearsDiscovered">Years discovered</label>
+                    <input type="text" class="form-control" id="yearDiscovered" placeholder="{{editModel.yearDiscovered}}">
+                </div>
+                <button type="submit" class="btn btn-default" ng-click="save()">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="grid1" ui-grid="gOptions" class="grid" ng-if="editButtonClicked==false" style="padding-top: 2%;"></div>
+
+</div>

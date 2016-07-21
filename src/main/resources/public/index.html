@@ -8,6 +8,7 @@
 
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.css">
 
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -17,11 +18,19 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-resource.js"></script>
+
 
         <script src="/js/JavaScriptFiles.js"></script>
+        <script src="/node_modules/angular-ui-grid/ui-grid.js"></script>
 
     </head>
-    <body ng-app="boot">
-        <ng-view></ng-view>
+    <body ng-app="boot" style="background-color: #cacaca" class="container">
+        <div class="row" style="background-color: burlywood">
+            <div ng-include="'/ts/views/nav.html'"></div>
+        </div>
+        <br>
+        <br>
+            <ng-view></ng-view>
     </body>
 </html>
