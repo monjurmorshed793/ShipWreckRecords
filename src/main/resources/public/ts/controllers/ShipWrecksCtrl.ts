@@ -126,7 +126,18 @@ module app{
         }
 
         private convertToJson(data:ShipWrecks):any{
-
+            var jsonObject=[];
+            var item={};
+            item['id']=data.id;
+            item['name']=data.name;
+            item['description']=data.description;
+            item['condition'] = data.condition;
+            item['depth']=data.depth;
+            item['latitude'] = data.latitude;
+            item['longitude'] = data.longitude;
+            item['yearDiscovered'] = data.yearDiscovered;
+            jsonObject.push(item);
+            return jsonObject;
         }
 
 
