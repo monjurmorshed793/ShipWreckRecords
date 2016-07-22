@@ -1,14 +1,14 @@
 module app{
 
     export interface IContextMenuScope extends ng.IScope{
-        customerInfo:any;
+        customer:ICustomer;
     }
 
     class ContextMenu implements ng.IDirective{
 
         static $inject=['$scope'];
         constructor($scope:IContextMenuScope){
-            $scope.customerInfo={};
+
         }
     }
 
@@ -17,9 +17,7 @@ module app{
         address:string;
     }
 
-    interface IAttributes extends ng.IAttributes{
-        customerInfo:ICustomer;
-    }
+
 
     class ContextMenuDirective implements ng.IDirective{
         static instance():ng.IDirective{
@@ -28,8 +26,10 @@ module app{
         public restrict='E';
         public controller = ContextMenu;
         public scope={
-            customer:'=info'
+            customer:'=customer'
         };
+
+       // public bindToController=true;
 
         template="Name: {{customer.name}} Address:{{customer.address}}";
         link(scope:ng.IScope, element:ng.IAugmentedJQuery, attributes:ng.IAttributes, controller:ContextMenu):void{
@@ -37,6 +37,25 @@ module app{
             /*element.empty();
 
             element.text("HEllo world {{customer.name}}, {{customer.address}}");*/
+            //var customer:ICustomer = attributes.
+
+            var elementObjects;
+            //element.text("Hello there");
+
+            scope.$watch('customer',(value:ICustomer)=>{
+                element.empty();
+                console.log(value.name);
+                elementObjects=angular.element("<h1>Name "+value.name+"</h1><br><h1>address"+value.address+"</h1>");
+                element.append(elementObjects);
+
+
+            });
+            //element.empty();
+
+            /*scope.$watch('customer',function(value){
+                console.log("***");
+                console.log(attributes);
+            })*/
         }
     }
 

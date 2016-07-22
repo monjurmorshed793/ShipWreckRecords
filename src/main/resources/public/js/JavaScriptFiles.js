@@ -132,7 +132,6 @@ var app;
 (function (app) {
     var ContextMenu = (function () {
         function ContextMenu($scope) {
-            $scope.customerInfo = {};
         }
         ContextMenu.$inject = ['$scope'];
         return ContextMenu;
@@ -142,8 +141,9 @@ var app;
             this.restrict = 'E';
             this.controller = ContextMenu;
             this.scope = {
-                customer: '=info'
+                customer: '=customer'
             };
+            // public bindToController=true;
             this.template = "Name: {{customer.name}} Address:{{customer.address}}";
         }
         ContextMenuDirective.instance = function () {
@@ -154,6 +154,20 @@ var app;
             /*element.empty();
 
             element.text("HEllo world {{customer.name}}, {{customer.address}}");*/
+            //var customer:ICustomer = attributes.
+            var elementObjects;
+            //element.text("Hello there");
+            scope.$watch('customer', function (value) {
+                element.empty();
+                console.log(value.name);
+                elementObjects = angular.element("<h1>Name " + value.name + "</h1><br><h1>address" + value.address + "</h1>");
+                element.append(elementObjects);
+            });
+            //element.empty();
+            /*scope.$watch('customer',function(value){
+                console.log("***");
+                console.log(attributes);
+            })*/
         };
         return ContextMenuDirective;
     })();
