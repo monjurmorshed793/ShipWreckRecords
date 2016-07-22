@@ -40,6 +40,10 @@ var app;
             this.$q = $q;
             this.$sce = $sce;
             this.$window = $window;
+            $scope.customer = {
+                name: 'Monjur-E-Morshed',
+                address: '17, Biddut Kutir, Seikh Shaheeb Bazar, Azimpur -1205"'
+            };
             $scope.clickHandler = {};
             $scope.editButtonClicked = false;
             $scope.saveButtonClicked = false;
@@ -123,4 +127,57 @@ var app;
     app.ShipWrecksCtrl = ShipWrecksCtrl;
     angular.module("boot")
         .controller("ShipWreckCtrl", ShipWrecksCtrl);
+})(app || (app = {}));
+var app;
+(function (app) {
+    var ContextMenu = (function () {
+        function ContextMenu($scope) {
+            $scope.customerInfo = {};
+        }
+        ContextMenu.$inject = ['$scope'];
+        return ContextMenu;
+    })();
+    var ContextMenuDirective = (function () {
+        function ContextMenuDirective() {
+            this.restrict = 'E';
+            this.controller = ContextMenu;
+            this.scope = {
+                customer: '=info'
+            };
+            this.template = "Name: {{customer.name}} Address:{{customer.address}}";
+        }
+        ContextMenuDirective.instance = function () {
+            return new ContextMenuDirective;
+        };
+        ContextMenuDirective.prototype.link = function (scope, element, attributes, controller) {
+            //var customer=this.scope.customer;
+            /*element.empty();
+
+            element.text("HEllo world {{customer.name}}, {{customer.address}}");*/
+        };
+        return ContextMenuDirective;
+    })();
+    function showContextMenu() {
+        var directive = {
+            restrict: 'A',
+            link: link,
+            scope: {
+                customerInfo: '=info'
+            },
+            template: "Name: {{customerInfo.name}} Address:{{customerInfo.address}}",
+            controller: ContextMenu
+        };
+        function link(scope, element) {
+            /* var table, div;
+ 
+             /!*scope.$watch('config')=>{
+ 
+             }*!/
+             element.empty();
+             table = angular.element('<table></table>');*/
+        }
+        return directive;
+    }
+    angular.module("boot")
+        .directive('contextMenu', ContextMenuDirective.instance);
 })(app || (app = {}));

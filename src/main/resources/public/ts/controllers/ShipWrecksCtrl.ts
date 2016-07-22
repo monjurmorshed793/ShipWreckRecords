@@ -9,6 +9,12 @@ module app{
     import IGridOptionsOf = uiGrid.IGridOptionsOf;
     interface IShipWrecks extends ng.IScope
     {
+
+        // for practice
+
+        customer:any;
+
+        //end of variables for practice
         myData:any;
         editButtonClicked:boolean;
         addButtonClicked:boolean;
@@ -51,6 +57,10 @@ module app{
                     private $window: ng.IWindowService
 
         ){
+            $scope.customer={
+                name:'Monjur-E-Morshed',
+                address:'17, Biddut Kutir, Seikh Shaheeb Bazar, Azimpur -1205"'
+            };
             $scope.clickHandler={};
             $scope.editButtonClicked=false;
             $scope.saveButtonClicked=false;
